@@ -24,7 +24,7 @@ dependencies {
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.1.0'
 
     // Kafka
-    implementation 'org.springframework.kafka:spring-kafka:3.1.2'
+    implementation 'org.springframework.kafka:spring-kafka'
 
     // intellij
     compileOnly 'org.springframework.boot:spring-boot-configuration-processor'
