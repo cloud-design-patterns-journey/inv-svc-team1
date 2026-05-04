@@ -10,3 +10,6 @@ cache:
   stock-items:
     ttl-seconds: "${CACHE_TTL_SECONDS:60}"
     max-size: "${CACHE_MAX_SIZE:500}"
+
+throttling:
+  requests-per-minute: "${THROTTLING_RPM:20}"

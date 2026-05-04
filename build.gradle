@@ -33,6 +33,9 @@ dependencies {
     // cache aside pattern
     implementation 'org.springframework.boot:spring-boot-starter-cache'
     implementation 'com.github.ben-manes.caffeine:caffeine:3.1.8'
+
+    // throttling pattern
+    implementation 'com.bucket4j:bucket4j-core:8.10.1'
 }
 
 springBoot {
