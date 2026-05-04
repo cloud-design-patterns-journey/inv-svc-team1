@@ -36,6 +36,10 @@ dependencies {
 
     // throttling pattern
     implementation 'com.bucket4j:bucket4j-core:8.10.1'
+
+    // queue-based load leveling + audit (kafka)
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
 }
 
 springBoot {
