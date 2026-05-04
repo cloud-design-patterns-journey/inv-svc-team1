@@ -96,6 +96,7 @@ spec:
         if kubectl get deploy $(params.app-name) &> /dev/null; then
           echo "Deployment $(params.app-name) exists, updating image"
           kubectl set image deployment/$(params.app-name) $(params.app-name)=$(params.image)
+          kubectl set env --from=secret/$(params.app-name)-config deployment/$(params.app-name)
         else
           echo "Creating deployment $(params.app-name)"
           kubectl create deploy $(params.app-name) --image $(params.image) --port $(params.app-port)
