@@ -5,3 +5,8 @@ openapi:
   id: "${API_ID:hello-watson}"
   title: "${API_TITLE:Hello Watson}"
   description: "${API_DESCRIPTION:Simple Hello World API}"
+
+cache:
+  stock-items:
+    ttl-seconds: "${CACHE_TTL_SECONDS:60}"
+    max-size: "${CACHE_MAX_SIZE:500}"

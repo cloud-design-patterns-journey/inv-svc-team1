@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.ibm.inventory_management.models.StockItem;
@@ -31,11 +33,13 @@ public class StockItemService implements StockItemApi {
                     .withManufacturer("Panasonic")));
 
     @Override
+    @Cacheable("stock-items")
     public List<StockItem> listStockItems() {
         return this.stockItems;
     }
 
     @Override
+    @CacheEvict(value = "stock-items", allEntries = true)
     public void addStockItem(String name, String manufacturer, double price, int stock) {
         this.stockItems.add(new StockItem(++id + "")
                 .withName(name)
@@ -45,6 +49,7 @@ public class StockItemService implements StockItemApi {
     }
 
     @Override
+    @CacheEvict(value = "stock-items", allEntries = true)
     public void updateStockItem(String id, String name, String manufacturer, double price, int stock) {
         StockItem itemToUpdate = this.stockItems.stream().filter(stockItem -> stockItem.getId().equals(id)).findFirst()
                 .orElse(null);
@@ -61,6 +66,7 @@ public class StockItemService implements StockItemApi {
     }
 
     @Override
+    @CacheEvict(value = "stock-items", allEntries = true)
     public void deleteStockItem(String id) {
         this.stockItems = this.stockItems.stream().filter((stockItem) -> !stockItem.getId().equals(id))
                 .collect(Collectors.toList());
